@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include<cs50.h>
+
+int main(void)
+{
+    long c;
+    long result=0;
+    c=get_long_long("Number :");
+
+
+    for (long i=10; i<=1000000000000000;i=i*100){
+         long first =((c/i)%10)*2;
+            if(first/10<1){
+                result+=first;
+            }else{
+                result+=(first/10)+(first%10);
+            }
+    }
+
+
+ for (long i=1; i<=1000000000000000;i=i*100){
+         long second =(c/i)%10;
+         result += second;
+    }
+
+
+    if(result%10==0){
+        if(c/10000000000000==34||c/10000000000000==37){
+            printf("AMEX\n");
+        } else if (c/100000000000000==51||c/100000000000000==52||c/100000000000000==53||c/100000000000000==54||c/100000000000000==55){
+            printf("MASTERCARD\n");
+        } else if (c/1000000000000000==4){
+            printf("VISA\n");
+        } else printf("INVALID\n");
+    } else printf("INVALID\n");
+}
